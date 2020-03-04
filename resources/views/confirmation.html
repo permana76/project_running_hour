@@ -1,0 +1,185 @@
+<section id="section-confirmation">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-offset-2 col-md-8">
+        <form name="confirmationForm" ng-submit="vm.checkConfirmationSlip()" novalidate>
+          <h3>VIEW CONFIRMATION SLIP</h3>
+
+          <div class="form-group">
+            <label>Identity Number * :</label>
+            <input type="text" id="confirmationSlipIdentityNo" class="form-control" name="identityNo" ng-model="vm.identityNo" required placeholder="Type your Identity Number here">
+            <span class="help-block" ng-show="confirmationForm.identityNo.$touched && confirmationForm.identityNo.$invalid">This field is required.</span>
+          </div>
+          <div>
+            <button type="button" class="btn btn-primary" ng-disabled="confirmationForm.$invalid" ng-click="vm.checkConfirmationSlip()">Check</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-md-offset-2 col-md-8">
+        <div ng-if="vm.step === 1" class="loading">
+          <div class="lds-confirmation">
+            <div>        
+            </div>
+            <div>        
+            </div>
+            <div>        
+            </div>
+            <div>        
+            </div>
+          </div>
+        </div>
+        <div ng-if="vm.step === 2" class="confirmationDetail">
+          <div class="title">
+            <h3>Confirmation Slip - RUN FOR INCLUSION 2020</h3>
+            <h4>15 August 2020 @ PAssion WaVe (Jurong Lake Gardens)</h4>
+          </div>
+
+          <hr />
+          <div class="row details">
+            <div class="col-sm-4">
+              <h4>Particulars</h4>
+
+              <div class="left-detail">
+                <p class="sub-title">Full Name:</p>
+                <p class="description">{{vm.data.fullName}}</p>
+                <!-- <p class="description">{{vm.data.firstName}} {{vm.data.lastName}}</p> -->
+              </div>
+              <div class="left-detail">
+                <p class="sub-title">NRIC / Passport:</p>
+                <p class="description">{{vm.data.identityNo}}</p>
+              </div>
+              <!-- <div class="left-detail">
+                <p class="sub-title">Gender:</p>
+                <p class="description">{{vm.data.gender}}</p>
+              </div> -->
+              <div class="left-detail">
+                <p class="sub-title">Contact No (Handphone):</p>
+                <p class="description">{{vm.data.contactNumber}}</p>
+              </div>
+              <div class="left-detail">
+                <p class="sub-title">Contact No (Home):</p>
+                <p class="description">{{vm.data.phoneNumber}}</p>
+              </div>
+              <div class="left-detail">
+                <p class="sub-title">E-Mail:</p>
+                <p class="description">{{vm.data.email}}</p>
+              </div>
+              <div class="left-detail">
+                <p class="sub-title">Year of Birth:</p>
+                <p class="description">{{vm.data.yearOfBirth}}</p>
+              </div>
+              <div class="left-detail">
+                <p class="sub-title">Postal Code:</p>
+                <p class="description">{{vm.data.postalCode}}</p>
+              </div>
+              <div class="left-detail">
+                <p class="sub-title">Unit Number:</p>
+                <p class="description">{{vm.data.unitNumber}}</p>
+              </div>
+            </div>
+            <div class="col-sm-8">
+              <h4>Registration Details</h4>
+
+              <div class="right-detail">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <p class="sub-title">Date:</p>
+                  </div>
+                  <div class="col-sm-8">
+                    <p class="description">{{vm.createdDate}}</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-4">
+                    <p class="sub-title">Registration ID:</p>
+                  </div>
+                  <div class="col-sm-8">
+                    <p class="description">{{vm.data._id}}</p>
+                  </div>
+                </div>
+                <div class="row last">
+                  <div class="col-sm-4">
+                    <p class="sub-title">Registration Type:</p>
+                  </div>
+                  <div class="col-sm-8">
+                    <p class="description">{{vm.registrationType}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="right-detail">
+                <div class="row">
+                  <div class="col-xs col-sm-4">
+                    <p class="sub-title">Category:</p>
+                  </div>
+                  <div class="col-xs col-sm-8">
+                    <p class="description">{{vm.data.raceCategory}}</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-4">
+                    <p class="sub-title">Event Time:</p>
+                  </div>
+                  <div class="col-sm-8">
+                    <p class="description">{{vm.eventTime}}</p>
+                  </div>
+                </div>
+                <div class="row last">
+                  <div class="col-sm-4">
+                    <p class="sub-title">T-Shirt Size:</p>
+                  </div>
+                  <div class="col-sm-8">
+                    <p class="description">{{vm.data.tShirtSize}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="right-detail">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <p class="sub-title">Registration Fee:</p>
+                  </div>
+                  <div class="col-sm-8">
+                    <p class="description">{{vm.data.raceAmount}}</p>
+                  </div>
+                </div>
+                <div class="row" ng-if="vm.data.discountPrice > 0">
+                  <div class="col-sm-4">
+                    <p class="sub-title">Promo Fee:</p>
+                  </div>
+                  <div class="col-sm-8">
+                    <p class="description">-{{vm.data.discountPrice}}</p>
+                  </div>
+                </div>
+                <div class="row" ng-if="vm.data.selectedMerchandises.length > 0">
+                  <div class="col-sm-4">
+                    <p class="sub-title">Merchandise:</p>
+                  </div>
+                  <div class="col-sm-8"></div>
+                </div>
+                <div class="row" ng-repeat="merchandise in vm.data.selectedMerchandises track by $index">
+                  <div class="col-sm-4">
+                    <p class="">{{merchandise.name}} {{merchandise.hasVarianSize === 'Yes' ? merchandise.varian : ''}} ({{merchandise.price}} X {{merchandise.quantity}})</p>
+                  </div>
+                  <div class="col-sm-8"> {{merchandise.price * merchandise.quantity}}</div>
+                </div>
+                <div class="row last">
+                  <div class="col-sm-4">
+                    <p class="sub-title">Payment Method:</p>
+                  </div>
+                  <div class="col-sm-8">
+                    <p class="description">{{vm.paymentMethod}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="right-detail" ng-if="vm.paymentMethod === 'Online'">
+                <h4>AMOUNT PAID: {{vm.data.amount}}</h4>
+              </div>
+            </div>
+        </div>
+        <hr />
+        <p class="info">Your registration confirms that you have read and agree during the online registration to abide by the Terms & Conditions of the RUN FOR INCLUSION 2020 as stipulated by the Organizer.</p>
+      </div>
+    </div>
+  </div>
+</section>

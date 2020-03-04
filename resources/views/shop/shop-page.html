@@ -1,0 +1,89 @@
+<section id="section-shop">
+  <div class="shop-button">
+    <a ui-sref="layout.shop" type="button" class="btn btn-primary btn-circle btn-home">
+      <img src="/resources/img/shop-home.svg" />
+      <md-tooltip md-direction="bottom">Shop Home</md-tooltip>
+    </a>
+    <a ui-sref="layout.cart" type="button" class="btn btn-primary btn-circle btn-cart">
+      <img src="/resources/img/shop-cart.svg" />
+      <md-tooltip md-direction="bottom">Cart</md-tooltip>
+    </a>
+    <span class="badge badge-danger" ng-if="vm.cartTotal !== 0">{{vm.cartTotal}}</span>
+  </div>
+  <div class="container">
+    <div class="product-lists">
+      <div class="row first-row" ng-if="vm.allProducts !='' && !vm.allProductsLoading">
+        <div ng-repeat="(index, product) in vm.allProducts">
+          <div class="col-xs-6 col-sm-3 product-col">
+            <a ui-sref="layout.product.view({slug: product.slug})">
+              <div class="product">
+                <div class="productImg">
+                  <img ng-src="{{product.images[0].data.md.path}}" atlt="{{product.name}} Image" />
+                  <div class="overlay"></div>
+                </div>
+                <div class="productDetail">
+                  <div class="name">
+                    <h5>{{product.name}}</h5>
+                  </div>
+                  <div class="discount" ng-if="product.discount !== 0">
+                    <div class="realPrice">
+                      <h5>SGD {{product.price}}</h5>
+                    </div>
+                    <div class="lastPrice">
+                      <h4 class="price"> SGD {{vm.getDiscountResult(product.price, product.discount)}} </h4>
+                      <h5 class="discount-label"> {{product.discount}}% OFF</h5>
+                    </div>
+                  </div>
+                  <div class="noDiscount" ng-if="product.discount === 0">
+                    <div class="realPrice">
+                      <h5>SGD {{product.price}}</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="clearfix visible-sm-block" ng-show="index === 3" ></div>
+        </div>
+        <div class="col-xs-12">
+          <div ng-if="vm.totalPages !== 1" class="pagination-div">
+            <ul class="pagination">
+                <!-- <li ng-disabled="vm.currentPage === 1" ng-class="{disabled:vm.currentPage === 1}">
+                    <a ng-click="vm.setPage(1)"><i class="glyphicon glyphicon-menu-left"></i><i class="glyphicon glyphicon-menu-left"></i></a>
+                </li> -->
+                <li ng-if="vm.currentPage !== 1">
+                    <a ng-click="vm.setPage(vm.currentPage - 1)"><i class="glyphicon glyphicon-chevron-left"></i></a>
+                </li>
+                <li ng-repeat="page in vm.pages" ng-class="{active:vm.currentPage === page, disabled:vm.currentPage === page}">
+                    <a ng-click="vm.setPage(page)">{{page}}</a>
+                </li>                
+                <li ng-if="vm.currentPage !== vm.totalPages">
+                    <a ng-click="vm.setPage(vm.currentPage + 1)"><i class="glyphicon glyphicon-chevron-right"></i></a>
+                </li>
+                <!-- <li ng-class="{disabled:vm.currentPage === vm.totalPages}">
+                    <a ng-click="vm.setPage(vm.totalPages)"><i class="glyphicon glyphicon-menu-right"></i><i class="glyphicon glyphicon-menu-right"></i></a>
+                </li> -->
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 shop-nodata " ng-if="vm.allProducts=='' && !vm.allProductsLoading ">
+          <h3 style="text-align:center ">No Data</h3>
+        </div>
+        <div class="col-xs-12 shop-nodata " ng-if="vm.allProductsLoading ">
+          <div class="lds-confirmation ">
+            <div>        
+            </div>
+            <div>        
+            </div>
+            <div>        
+            </div>
+            <div>        
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

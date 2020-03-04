@@ -1,0 +1,171 @@
+#section-confirmation {
+  background-color: #f8f8f8;
+  padding: 100px 0;
+  height: calc(100% - 200px);
+  font-family: 'Roboto', sans-serif;
+}
+
+#section-confirmation h2 {
+  color: #5B337C;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  font-size: 26px;
+  padding-top: 20px;
+}
+
+#section-confirmation h3 {
+  color: #5b327b;
+  font-weight: 500;
+  font-size: 21px;
+  font-family:'Gotham Medium';
+  margin-bottom: 25px;
+}
+
+#section-confirmation p {
+  font-size: 15px;
+  font-weight: 400;
+  color: #000;
+}
+
+#section-confirmation .btn-primary {
+  background-color: #5B337C;
+}
+
+#section-confirmation form {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 50px 25px;
+}
+
+#section-confirmation .loading {
+  background-color: #fff;
+  border-radius: 10px;
+  margin-top: 25px;
+  height: 64px;
+  position: relative;
+}
+
+.lds-confirmation {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 64px;
+  height: 64px;
+}
+
+.lds-confirmation div {
+  position: absolute;
+  top: 27px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #5B337C;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.lds-confirmation div:nth-child(1) {
+  left: 6px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+
+.lds-confirmation div:nth-child(2) {
+  left: 6px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-confirmation div:nth-child(3) {
+  left: 26px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-confirmation div:nth-child(4) {
+  left: 45px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+
+#section-confirmation .confirmationDetail {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 25px;
+  margin-top: 25px;
+}
+
+#section-confirmation .confirmationDetail .title {
+  color: #4d4d4d;
+  text-align: center;
+}
+
+#section-confirmation .confirmationDetail .title h3 {
+  color: #4d4d4d;
+}
+
+#section-confirmation .confirmationDetail .left-detail {
+  margin-bottom: 15px;
+}
+
+#section-confirmation .confirmationDetail .left-detail .sub-title {
+  margin-bottom: 0;
+}
+
+#section-confirmation .confirmationDetail .right-detail {
+  border: 1px solid #737373;
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+}
+
+#section-confirmation .confirmationDetail .right-detail .last p {
+  margin-bottom: 0;
+}
+
+#section-confirmation .confirmationDetail .sub-title {
+  font-weight: 900;
+}
+
+#section-confirmation input.ng-valid.ng-dirty.form-control {
+    border-color: #28a745;
+    box-shadow: none;
+}
+
+#section-confirmation input.ng-valid.ng-dirty.form-control:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40,167,69,.25);
+}
+
+#section-confirmation input.ng-invalid.ng-dirty.form-control,
+#section-confirmation input.ng-invalid.ng-touched.form-control {
+    border-color: #dc3545;
+    box-shadow: none;
+}
+
+#section-confirmation input.ng-invalid.ng-dirty.form-control:focus,
+#section-confirmation input.ng-invalid.ng-touched.form-control:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220,53,69,.25);
+}
+
+#section-confirmation p.description,
+#section-confirmation p.info {
+  color: #737373;
+}
+
+#section-confirmation .help-block {
+  width: 100%;
+  margin-top: .3rem;
+  font-size: 90%;
+  color: #dc3545;
+}
+
+@media (max-width: 600px) {
+  #section-confirmation .confirmationDetail .right-detail p.sub-title {
+    margin-bottom: 0;
+  } 
+  #section-confirmation .confirmationDetail .right-detail p.description {
+    margin-bottom: 10px;
+  }
+}
+
+

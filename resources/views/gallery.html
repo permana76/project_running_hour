@@ -1,0 +1,29 @@
+<section id="section-gallery">
+  <h2>{{vm.pageTitle}}</h2>
+  <hr>
+  <div class="categories">
+    <a ui-sref="layout.gallery.list({ year: '2018' })">2018</a> &bullet; 
+    <a ui-sref="layout.gallery.list({ year: '2017' })">2017</a> &bullet; 
+    <a ui-sref="layout.gallery.list({ year: '2016' })">2016</a> &bullet; 
+    <a ui-sref="layout.gallery.list({ year: '2015' })">2015</a></div>
+  <div layout="row" layout-xs="column" layout-align="start center" layout-padding layout-wrap style="display: flex !important;">
+    <div flex-gt-sm="20" flex-sm="33" flex-xs="100" ng-repeat="img in vm.galleryImages">
+      <div ng-click="vm.view($index, $event)"><img ng-src="{{img.image}}" alt="{{img.label}}" style="width: 100%"></div>
+    </div>
+  </div>
+</section>
+
+<div style="visibility: hidden" ondragstart="return false;" ondrop="return false;">
+  <div class="md-dialog-container" id="viewImage">
+    <md-dialog class="gallery-dialog">
+      <div class="close-btn" ng-click="vm.close()">
+        &times;
+      </div>
+      <div class="prev glyphicon glyphicon-chevron-left" ng-click="vm.previous()">
+      </div>
+      <div class="next glyphicon glyphicon-chevron-right" ng-click="vm.next()">
+      </div>
+      <img ng-src="{{vm.galleryImages[vm.index].image}}" alt="{{vm.galleryImages[vm.index].label}}" class="gallery-image">
+    </md-dialog>
+  </div>
+</div>

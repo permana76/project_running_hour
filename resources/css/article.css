@@ -1,0 +1,41 @@
+#section-article {
+  background-color: #f8f8f8;
+  padding: 100px 10%;
+  font-family: 'Roboto', sans-serif;
+}
+
+#section-article h2 {
+  color: #5B337C;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  font-size: 180%;
+}
+
+#section-article .date {
+  font-size: 100%;
+  font-style: italic;
+}
+
+.article-content {
+  margin-bottom: 50px;
+}
+
+.article-title {
+  color: #5B337C;
+  font-size: 120%;
+  font-weight: 500;
+  font-family: 'Gotham Medium';
+}
+
+.article-content h3 {
+  font-size: 160%;
+  color: #5b327b;
+  font-family: 'Gotham Medium';
+  margin-top: 0px;
+}
+
+.article-content p {
+  font-size: 100%;
+  text-align: justify;
+  color: #000;
+}

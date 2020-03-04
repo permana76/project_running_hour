@@ -1,0 +1,15 @@
+#section-footer {
+	position: relative;
+	bottom: 0;
+  background-color: #292929;
+  height: 200px;
+  padding: 30px 25px;
+  color: white;
+  text-align: center;
+  font-size: 15px;
+  font-family: 'Roboto', sans-serif;
+}
+
+#section-footer .xcidic {
+	color: #fef105;
+}

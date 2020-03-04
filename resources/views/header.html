@@ -1,0 +1,91 @@
+<div class="header-container">
+  <a ui-sref="layout.home" style="text-decoration: none">
+    <img src="resources/img/logopur.png" class="logo" alt="Homescreen of Running Hour">
+  </a>
+  <span class="text" ng-bind-html="pageTitle"></span>
+  <button tabindex="0" ng-click="vm.menuOpen = !vm.menuOpen" class="header-navigation-btn" aria-label="Expand menu button, press enter to expand">
+    <img src="resources/img/burger.svg" alt="menu icon">
+  </button>
+  <div class="loading-circle" ng-show="isLoading" aria-hidden="true">
+    <md-progress-circular md-mode="indeterminate" md-diameter="55"></md-progress-circular>
+  </div>
+</div> 
+
+<div class="navigation navigation-anim" ng-show="vm.menuOpen" aria-hidden="!vm.menuOpen">
+	<ul class="nav">
+	  <li>
+      <a ui-sref="layout.home" ng-click="vm.menuOpen = !vm.menuOpen">Home</a>
+    </li>
+    <li>
+      <a ui-sref="layout.about({'#': 'join-us-for-observation-run'})" ng-click="vm.menuOpen = !vm.menuOpen">Join Us For Observation Run</a>
+    </li>
+    <!-- TODO REMOVE THIS -->
+    <!-- <li>
+      <a ui-sref="layout.rfiPayment({'_id': '5d21a89b49c3872304ab05b3'})" ng-click="vm.menuOpen = !vm.menuOpen">Payment</a>
+    </li> -->
+	  <li>
+      <a tabindex="0" class="expandable" ng-click="vm.runningCollapsed = !vm.runningCollapsed" aria-label="Runninghour 2019 menu, press enter to expand">RUN FOR INCLUSION 2020</a>
+  	  <ul class="expand-menu" uib-collapse="vm.runningCollapsed" aria-hidden="vm.runningCollapsed">
+        <li><a ui-sref="layout.race({'#': 'empathy'})" ng-click="vm.menuOpen = !vm.menuOpen">Empathy Run Segment</a></li>
+        <li><a ui-sref="layout.race({'#': 'howto'})" ng-click="vm.menuOpen = !vm.menuOpen">How To Do a Blindfold Run?</a></li>
+  	    <li><a ui-sref="layout.race({'#': 'categories'})" ng-click="vm.menuOpen = !vm.menuOpen">Categories & Fees</a></li>
+  	    <li><a ui-sref="layout.race({'#': 'race_pack'})" ng-click="vm.menuOpen = !vm.menuOpen">Race Pack Collection</a></li>
+  	    <!-- <li class="nav-reg"><a ui-sref="layout.race({'#': 'registration'})" ng-click="vm.menuOpen = !vm.menuOpen">Registration</a></li> -->
+        <li class="nav-conf"><a ui-sref="layout.race({'#': 'confirmation'})" ng-click="vm.menuOpen = !vm.menuOpen">Confirmation Slip</a></li>
+  	    <li><a ui-sref="layout.race({'#': 'runners'})" ng-click="vm.menuOpen = !vm.menuOpen">Runner's Entitlements</a></li>
+  	    <li><a ui-sref="layout.race({'#': 'route'})" ng-click="vm.menuOpen = !vm.menuOpen">Running Route</a></li>
+  	    <li><a ui-sref="layout.race({'#': 'integration'})" ng-click="vm.menuOpen = !vm.menuOpen">Integration Workshops</a></li>
+  	    <li><a ui-sref="layout.race({'#': 'getting'})" ng-click="vm.menuOpen = !vm.menuOpen">Getting There</a></li>
+  	    <li><a ui-sref="layout.race({'#': 'sponsors'})" ng-click="vm.menuOpen = !vm.menuOpen">Sponsorship</a></li>
+  	    <li><a ui-sref="layout.race({'#': 'faq'})" ng-click="vm.menuOpen = !vm.menuOpen">F.A.Q</a></li>
+  	  </ul>
+    </li>
+    <li>
+     <a tabindex="0" class="expandable" ng-click="vm.calendarCollapsed = !vm.calendarCollapsed" aria-label="Calendar menu, press enter to expand">Calendar</a>
+     <ul class="expand-menu" uib-collapse="vm.calendarCollapsed" aria-hidden="vm.calendarCollapsed">
+        <li><a ui-sref="layout.calendar({'#': 'events'})" ng-click="vm.menuOpen = !vm.menuOpen">Upcoming Events</a></li>
+        <li><a ui-sref="layout.calendar({'#': 'weekdayrun'})" ng-click="vm.menuOpen = !vm.menuOpen">RH Weekday Run</a></li>
+        <li><a ui-sref="layout.calendar({'#': 'calendar'})" ng-click="vm.menuOpen = !vm.menuOpen">2020/2021 Training Calendar</a></li>
+      </ul>
+    </li>
+	  <li>
+      <a tabindex="0" class="expandable" ng-click="vm.aboutCollapsed = !vm.aboutCollapsed" aria-label="About us menu, press enter to expand">About Us</a>
+  	  <ul class="expand-menu" uib-collapse="vm.aboutCollapsed" aria-hidden="vm.aboutCollapsed">
+  	    <li><a ui-sref="layout.about({'#': 'running'})" ng-click="vm.menuOpen = !vm.menuOpen">Runninghour</a></li>
+  	    <!-- <li><a ui-sref="layout.about({'#': 'membership'})" ng-click="vm.menuOpen = !vm.menuOpen">Membership</a></li> -->
+  	    <li><a ui-sref="layout.about({'#': 'service'})" ng-click="vm.menuOpen = !vm.menuOpen">Services</a></li>
+  	    <li><a ui-sref="layout.about({'#': 'contact'})" ng-click="vm.menuOpen = !vm.menuOpen">Contact</a></li>
+  	    <li><a ui-sref="layout.about({'#': 'partner'})" ng-click="vm.menuOpen = !vm.menuOpen">Partners</a></li>
+  	  </ul>
+    </li>
+	  <li>
+      <a tabindex="0" class="expandable" ng-click="vm.articlesCollapsed = !vm.articlesCollapsed" aria-label="Articles menu, press enter to expand">Articles</a>
+  	  <ul class="expand-menu" uib-collapse="vm.articlesCollapsed" aria-hidden="vm.articlesCollapsed">
+        <li><a ui-sref="layout.articles.list({type: undefined})" ng-click="vm.menuOpen = !vm.menuOpen">All</a></li>
+        <li><a ui-sref="layout.articles.list({type: 'media'})" ng-click="vm.menuOpen = !vm.menuOpen">Media</a></li>
+        <li><a ui-sref="layout.articles.list({type: 'newsletter'})" ng-click="vm.menuOpen = !vm.menuOpen">Newsletter</a></li>
+  	    <li><a ui-sref="layout.articles.list({type: 'featuredMembers'})" ng-click="vm.menuOpen = !vm.menuOpen">Featured Members</a></li>
+  	  </ul>
+    </li>
+    <li>
+      <a tabindex="0" class="expandable" ng-click="vm.galleryCollapsed = !vm.galleryCollapsed" aria-label="Gallery menu, press enter to expand">Gallery</a>
+      <ul class="expand-menu" uib-collapse="vm.galleryCollapsed" aria-hidden="vm.galleryCollapsed">
+        <li><a ui-sref="layout.gallery.list({ year: '2018' })" ng-click="vm.menuOpen = !vm.menuOpen">2018</a></li>
+        <li><a ui-sref="layout.gallery.list({ year: '2017' })" ng-click="vm.menuOpen = !vm.menuOpen">2017</a></li>
+        <li><a ui-sref="layout.gallery.list({ year: '2016' })" ng-click="vm.menuOpen = !vm.menuOpen">2016</a></li>
+        <li><a ui-sref="layout.gallery.list({ year: '2015' })" ng-click="vm.menuOpen = !vm.menuOpen">2015</a></li>
+      </ul>
+    </li>
+    <!-- <li>
+      <a ui-sref="layout.shop" ng-click="vm.menuOpen = !vm.menuOpen">Shop</a>
+    </li> -->
+    <li>
+      <a tabindex="0" class="expandable" ng-click="vm.faqCollapsed = !vm.faqCollapsed" aria-label="Frequently asked questions menu, press enter to expand">F.A.Q</a>
+      <ul class="expand-menu" uib-collapse="vm.faqCollapsed" aria-hidden="vm.faqCollapsed">
+        <li><a ui-sref="layout.faq({'#': 'membership'})" ng-click="vm.menuOpen = !vm.menuOpen">Co-op Membership</a></li>
+        <li><a ui-sref="layout.faq({'#': 'guide'})" ng-click="vm.menuOpen = !vm.menuOpen">Running Guide</a></li>
+      </ul>
+    </li>
+	</ul>
+  <button tabindex="0" class="closebtn" ng-click="vm.menuOpen = !vm.menuOpen" aria-label="Close button, press enter to close menu">&times;</button>
+</div>

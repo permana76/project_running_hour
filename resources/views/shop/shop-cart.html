@@ -1,0 +1,155 @@
+<section id="section-cart">
+  <div class="shop-button">
+    <a ui-sref="layout.shop" type="button" class="btn btn-primary btn-circle btn-home">
+      <img src="/resources/img/shop-home.svg" />
+      <md-tooltip md-direction="bottom">Shop Home</md-tooltip>
+    </a>
+    <a ui-sref="layout.cart" type="button" class="btn btn-primary btn-circle btn-cart">
+      <img src="/resources/img/shop-cart.svg" />
+      <md-tooltip md-direction="bottom">Cart</md-tooltip>
+    </a>
+    <span class="badge badge-danger" ng-if="vm.cartTotal !== 0">{{vm.cartTotal}}</span>
+  </div>
+  <div class="container">
+    <div class="cartNull" ng-if="vm.cartTotal === 0">
+      <h4>Your cart is empty</h4>
+      <a ui-sref="layout.shop" type="button" class="btn btn-primary btn-flat">
+        CONTINUE SHOPPING
+      </a>
+    </div>
+    <div class="cart" ng-if="vm.cartTotal !== 0">      
+      <h4>YOUR CART </h4>
+      <div class="row first-row">
+        <div class="col-xs-12 col-sm-7 col-md-7">
+          <div class="cartLists">
+            <div class="list" ng-repeat="product in vm.cart">
+              <div class="row">
+                <div class="col-xs-4 col-sm-5 col-md-4 listImg">
+                  <a ui-sref="layout.product.view({slug: product.slug})">
+                    <img ng-src="{{product.image}}" atlt="{{product.name}} Image" />
+                  </a>
+                </div>
+                <div class="col-xs-8 col-sm-7 col-md-6 listDetail">
+                  <a ui-sref="layout.product.view({slug: product.slug})">
+                    <h4>{{product.name}}</h4>
+                  </a>
+                  <div class="discount" ng-if="product.discount !== 0">
+                    <div class="price">
+                      <h4> SGD {{vm.getDiscountResult(product.price, product.discount, product.quantity)}} </h4>
+                    </div>
+                    <div class="realPrice">
+                      <h5>SGD {{(product.price * product.quantity).toFixed(2)}}</h5>
+                    </div>
+                    <div class="discount-label">
+                      <h5> {{product.discount}}% OFF</h5>
+                    </div>
+                  </div>
+                  <div class="noDiscount" ng-if="product.discount === 0">
+                    <div class="realPrice">
+                      <h5>SGD {{(product.price * product.quantity).toFixed(2)}}</h5>
+                    </div>
+                  </div>
+                  <p ng-if="product.size != null"><strong>Size :</strong> {{product.size}}</p>
+                  <p><strong>Quantity :</strong> {{product.quantity}}</p>
+                  <p><strong>Notes :</strong> {{product.notes}}</p>
+                  <div class="listButton">
+                    <button type="button" class="btn btn-danger btn-sm" ng-click="vm.removeProduct($index)">
+                      <span class="glyphicon glyphicon-trash"></span> Remove
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-5 col-md-5">
+          <div class="cartSummary">
+            <div class="summaryTitle">
+              <h4 class="cartTitle">SUMMARY</h4>
+            </div>
+            <div class="summaryContent">
+              <div class="row">
+                <div class="col-xs-8 col-sm-7">
+                  <h4>Subtotal</h4>
+                </div>
+                <div class="col-xs-4 col-sm-5">
+                  SGD {{vm.subtotal.toFixed(2)}}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-8 col-sm-7">
+                  <h4>Delivery</h4>
+                </div>
+                <div class="col-xs-4 col-sm-5">
+                  Free
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-8 col-sm-7">
+                  <h4>Total</h4>
+                </div>
+                <div class="col-xs-4 col-sm-5">
+                  SGD {{vm.subtotal.toFixed(2)}}
+                </div>
+              </div>
+            </div>
+            <div class="summaryButton">
+              <a type="button" class="btn btn-primary checkout" ng-href="/shop/payment">CHECKOUT</a>
+              <a type="button" class="btn btn-dark continue" ng-href="/shop">CONTINUE SHOPPING</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="other-products">
+          <div class="other-products-title">
+            <h4><span>THESE POPULAR PRODUCTS MIGHT INTEREST YOU </span></h4>
+          </div>
+          <div class="row" ng-if="!vm.otherProductsLoading">
+            <div class="col-xs-6 col-sm-3 product-col" ng-repeat="product in vm.otherProducts">
+              <a ui-sref="layout.product.view({slug: product.slug})">
+                <div class="product">
+                  <div class="productImg">
+                    <img ng-src="{{product.images[0].data.md.path}}" atlt="{{product.name}} Image" />
+                    <div class="overlay"></div>
+                  </div>
+                  <div class="productDetail">
+                    <div class="name">
+                      <h5>{{product.name}}</h5>
+                    </div>
+                    <div class="discount" ng-if="product.discount !== 0">
+                      <div class="realPrice">
+                        <h5>SGD {{product.price}}</h5>
+                      </div>
+                      <div class="lastPrice">
+                        <h4 class="price"> SGD {{vm.getDiscountResult(product.price, product.discount)}} </h4>
+                        <h5 class="discount-label"> {{product.discount}}% OFF</h5>
+                      </div>
+                    </div>
+                    <div class="noDiscount" ng-if="product.discount === 0">
+                      <div class="realPrice">
+                        <h5>SGD {{product.price}}</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="shop-nodata" ng-if="vm.otherProductsLoading">
+            <div class="lds-confirmation">
+              <div>        
+              </div>
+              <div>        
+              </div>
+              <div>        
+              </div>
+              <div>        
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

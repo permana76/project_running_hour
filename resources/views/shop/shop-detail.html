@@ -1,0 +1,151 @@
+<section id="section-shop-detail">
+  <div class="shop-button">
+    <a ui-sref="layout.shop" type="button" class="btn btn-primary btn-circle btn-home">
+      <img src="/resources/img/shop-home.svg" />
+      <md-tooltip md-direction="bottom">Shop Home</md-tooltip>
+    </a>
+    <a ui-sref="layout.cart" type="button" class="btn btn-primary btn-circle btn-cart">
+      <img src="/resources/img/shop-cart.svg" />
+      <md-tooltip md-direction="bottom">Cart</md-tooltip>
+    </a>
+    <span class="badge badge-danger" ng-if="vm.cartTotal !== 0">{{vm.cartTotal}}</span>
+  </div>
+  <div class="container">
+    <div class="row first-row">
+      <div class="col-xs-12 col-md-offset-1 col-md-10">
+        <div class="product-detail">
+          <div class="row detail" ng-if="!vm.productLoading">
+            <div class="col-sm-6">
+              <div class="productImg">
+                <img class="main-image" style="width: 100%" ng-src="{{vm.imageActive}}" atlt="{{product.name}} Image" />
+              </div>
+              <div class="tiny-images visible-xs visible-sm">
+                <slick settings="vm.slickConfigsmDown">
+                  <div ng-repeat="image in vm.product.images" ng-click="vm.changeImageActive(image.data.md.path)">                    
+                    <div class="product-tiny-image" ng-class="{active: vm.imageActive === image.data.md.path}">
+                      <img ng-src="{{image.data.md.path}}" atlt="{{vm.product.name}} Image" />
+                    </div>
+                  </div>
+                </slick>
+              </div>
+              <div class="tiny-images hidden-xs hidden-sm">
+                <slick settings="vm.slickConfigmdUp">
+                  <div ng-repeat="image in vm.product.images" ng-click="vm.changeImageActive(image.data.md.path)">                    
+                    <div class="product-tiny-image" ng-class="{active: vm.imageActive === image.data.md.path}">
+                      <img ng-src="{{image.data.md.path}}" atlt="{{vm.product.name}} Image" />
+                    </div>
+                  </div>
+                </slick>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <h3 class="name">{{vm.product.name}}</h3>
+              <div class="discount" ng-if="vm.product.discount !== 0">
+                <div class="price">
+                  <h5 class="realPrice">SGD {{vm.product.price}}</h5>
+                  <h4 class="lastPrice"> SGD {{vm.getDiscountResult(vm.product.price, vm.product.discount)}} </h4>
+                </div>
+                <div class="discount-label">
+                  <h5> {{vm.product.discount}}% OFF</h5>
+                </div>
+              </div>
+              <div class="noDiscount" ng-if="vm.product.discount === 0">
+                <div class="realPrice">
+                  <h4>SGD {{vm.product.price}}</h4>
+                </div>
+              </div>
+              <div class="description">
+                <p>{{vm.product.description}}</p>
+              </div>
+              <form name="addCartForm" novalidate>
+                <div class="form-group select-size" ng-if="vm.product.sizes.length !== 0">
+                  <label>CHOOSE SIZE</label>
+                  <select class="form-control" name="productSize" ng-model="vm.productSize" required>
+                    <option value="">- - - Please select - - -</option>
+                    <option ng-repeat="size in vm.product.sizes" value="{{size}}">{{size}}</option>
+                  </select>
+                  <span class="help-block" ng-show="addCartForm.productSize.$dirty && addCartForm.productSize.$invalid">This field is required.</span>
+                </div>
+                <div class="form-group select-qty">
+                  <label>QUANTITY </label>
+                  <select class="form-control" ng-model="vm.productQty" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>NOTES</label>
+                  <textarea class="form-control" rows="3" placeholder="Type notes here" ng-model="vm.productNotes"></textarea>
+                </div>
+                <button type="button" class="btn btn-primary btn-add" ng-disabled="addCartForm.$invalid" ng-click="vm.addLocalStorage()">ADD TO CART</button>
+              </form>
+            </div>
+          </div>                                
+          <div class="shop-nodata" ng-if="vm.productLoading">
+            <div class="lds-confirmation">
+              <div>        
+              </div>
+              <div>        
+              </div>
+              <div>        
+              </div>
+              <div>        
+              </div>
+            </div>
+          </div>
+          <div class="other-products">
+            <div class="other-products-title">
+              <h4><span>THESE POPULAR PRODUCTS MIGHT INTEREST YOU </span></h4>
+            </div>
+            <div class="row" ng-if="!vm.otherProductsLoading">
+              <div class="col-xs-6 col-sm-3 col-md-3 product-col" ng-repeat="product in vm.otherProducts">
+                <a ui-sref="layout.product.view({slug: product.slug})">
+                  <div class="product">
+                    <div class="productImg">
+                      <img ng-src="{{product.images[0].data.md.path}}" atlt="{{product.name}} Image" />
+                      <div class="overlay"></div>
+                    </div>
+                    <div class="productDetail">
+                      <div class="name">
+                        <h5>{{product.name}}</h5>
+                      </div>
+                      <div class="discount" ng-if="product.discount !== 0">
+                        <div class="realPrice">
+                          <h5>SGD {{product.price}}</h5>
+                        </div>
+                        <div class="lastPrice">
+                          <h4 class="price"> SGD {{vm.getDiscountResult(product.price, product.discount)}} </h4>
+                          <h5 class="discount-label"> {{product.discount}}% OFF</h5>
+                        </div>
+                      </div>
+                      <div class="noDiscount" ng-if="product.discount === 0">
+                        <div class="realPrice">
+                          <h5>SGD {{product.price}}</h5>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>                      
+            <div class="shop-nodata" ng-if="vm.otherProductsLoading">
+              <div class="lds-confirmation">
+                <div>        
+                </div>
+                <div>        
+                </div>
+                <div>        
+                </div>
+                <div>        
+                </div>
+              </div>
+            </div>
+          </div>   
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

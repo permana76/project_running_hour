@@ -1,0 +1,280 @@
+.alert-purple {
+  color: #fff;
+  background-color: #9B59B6;
+  border-color: #9B59B6;
+}
+
+.alert-purple a {
+  color: #fff;
+}
+
+.alert-purple a:hover {
+  color: #8E44AD;
+}
+
+#section-registration {
+  background-color: #f8f8f8;
+  padding: 100px 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+#section-registration h2 {
+  color: #5B337C;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  font-size: 26px;
+  padding-top: 20px;
+}
+
+#section-registration h3 {
+  color: #5b327b;
+  font-weight: 500;
+  font-size: 21px;
+  font-family:'Gotham Medium';
+}
+
+#section-registration p {
+  font-size: 15px;
+  font-weight: 400;
+  color: #000;
+}
+
+#section-registration .btn-primary {
+  background-color: #5B337C;
+}
+
+#section-registration form {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 50px 25px;
+}
+
+#section-registration select {
+  cursor: pointer;
+}
+
+#section-registration .date .day {
+  padding-right: 5px;
+}
+#section-registration .date .month{
+  padding: 0 5px;
+}
+
+#section-registration .date .year {
+  padding-left: 5px;
+} 
+
+#section-registration .table-responsive {
+ margin-top: 25px;
+}
+
+#section-registration .table th,
+#section-registration .table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+#section-registration .table label {
+    display: block;
+    margin-left: 20px;
+    cursor: pointer;
+}
+#section-registration .table input {
+    cursor: pointer;
+    float: left;
+    margin-left: -20px;
+    margin-right: 7px;
+}
+
+#section-registration .terms ol {
+  margin-bottom: 25px;
+}
+
+#section-registration p.info {
+  color: #737373;
+}
+
+#section-registration .more-info {
+  margin-top: 5px;
+  display: block;
+}
+
+#section-registration .cardLogos {
+  margin-top: 10px;
+}
+
+#section-registration .cardLogo {
+  width: 50px;
+  margin-right: 10px;
+
+}
+
+#section-registration input.cvc {
+  width: 75px;
+}
+
+#section-registration .amountCategory h4 {
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+#section-registration .amountCategory h5 {
+  margin-top: 5px;
+}
+
+#section-registration .subamountPrize {
+  text-align: right;
+  font-weight: 500;
+}
+
+#section-registration .amountPrize {
+  text-align: right;
+  font-size: 50px;
+}
+
+#section-registration .respondRegistration h1,
+#section-registration .respondRegistration p,
+#section-registration .respondRegistration a {
+  text-align: center;
+}
+
+#section-registration .respondRegistration a.purple {
+  margin-top: 50px;
+  background-color: #5b327b;
+  color: #fff;
+}
+
+#section-registration .respondRegistration a.purple:hover {
+  background-color: #3f2056;
+}
+
+@media (min-width: 600px) {
+  #section-registration .date .day,
+  #section-registration .date .month,
+  #section-registration .date .year {
+    padding: 0 15px;
+  } 
+}
+
+input.ng-valid.ng-dirty.form-control,
+textarea.ng-valid.ng-dirty.form-control {
+    border-color: #28a745;
+    box-shadow: none;
+}
+
+input.ng-valid.ng-dirty.form-control:focus,
+textarea.ng-valid.ng-dirty.form-control:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40,167,69,.25);
+}
+
+input.ng-invalid.ng-dirty.form-control,
+input.ng-invalid.ng-touched.form-control,
+textarea.ng-invalid.ng-dirty.form-control,
+textarea.ng-invalid.ng-touched.form-control {
+    border-color: #dc3545;
+    box-shadow: none;
+}
+
+input.ng-invalid.ng-dirty.form-control:focus,
+input.ng-invalid.ng-touched.form-control:focus,
+textarea.ng-invalid.ng-dirty.form-control:focus,
+textarea.ng-invalid.ng-touched.form-control:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220,53,69,.25);
+}
+
+select.ng-valid.ng-dirty.form-control {
+    border-color: #28a745;
+    box-shadow: none;
+}
+
+select.ng-valid.ng-dirty.form-control:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40,167,69,.25);
+}
+
+select.ng-invalid.ng-touched.form-control {
+    border-color: #dc3545;
+    box-shadow: none;
+}
+
+select.ng-invalid.ng-touched.form-control:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220,53,69,.25);
+}
+
+.help-block {
+  width: 100%;
+  margin-top: .3rem;
+  font-size: 90%;
+  color: #dc3545;
+}
+
+.country-code-group .form-control{
+  width:50%;
+}
+
+.country-code-group .form-control-left{
+  width:40%;
+}
+
+.country-code-group .form-control-right{
+  width:60%;
+}
+
+.cb input[type='checkbox'] {
+  -webkit-appearance:none;
+  width:20px;
+  height:20px;
+  background:white;
+  border-radius:5px;
+  border:2px solid #555;
+}
+.cb input[type='checkbox']:checked {
+  background: #9B59B6;
+}
+.img-merchandise {
+  display: block;
+  max-width:100%;
+  max-height:150px;
+  width: auto;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 3px;
+  opacity: 0.9;
+}
+.img-merchandise:hover {
+  opacity: 1;
+  transform: scale(1.02);
+}
+.img-merchandise-modal {
+  display: block;
+  max-width:100%;
+  max-height:200px;
+  width: auto;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+.product-name {
+  text-decoration: none;
+  text-align: center;
+}
+.product-name:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+  transform: scale(1.02);
+}
+.p-2 {
+  padding: 2px;
+}
+.mt-4 {
+  margin-top: 4px;
+}
+
+span.alert_danger {
+  text-decoration: line-through;
+  color: red;
+}

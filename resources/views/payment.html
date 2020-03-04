@@ -1,0 +1,133 @@
+<section id="section-registration">
+  <div class="container">
+      <!-- <h2>REGISTRATION IS CLOSED </h2> -->
+    <div class="row">
+      <div class="col-xs-12 col-md-offset-2 col-md-8">
+        <form name="myForm" ng-submit="vm.submitForm()" novalidate>
+          <div ng-if="vm.step === 3" class="stripe">
+            <h3>PAYMENT </h3>
+            <div class="form-group">
+              <label>Card Number * :</label>
+              <input type="text" class="form-control" name="cardNumber" ng-model="vm.cardNumber" pattern="[0-9.]+" required placeholder="Type your Card Number">
+              <span class="help-block" ng-show="myForm.cardNumber.$error.pattern">This field should be number!</span>
+              <span class="help-block" ng-show="myForm.cardNumber.$touched && myForm.cardNumber.$error.required">This field is required.</span>
+              <div class="cardLogos">
+                <img class="cardLogo" ng-show="vm.getCardType() === 'Amex'" src="resources/img/registration/amex.jpg" />
+                <img class="cardLogo" ng-show="vm.getCardType() === 'Diners'" src="resources/img/registration/diners.jpg" />
+                <img class="cardLogo" ng-show="vm.getCardType() === 'Discover'" src="resources/img/registration/discover.jpg" />
+                <img class="cardLogo" ng-show="vm.getCardType() === 'JCB'" src="resources/img/registration/jcb.jpg" />
+                <img class="cardLogo" ng-show="vm.getCardType() === 'Mastercard'" src="resources/img/registration/mastercard.jpg" />
+                <img class="cardLogo" ng-show="vm.getCardType() === 'Visa'" src="resources/img/registration/visa.jpg" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Expiration Date * :</label>
+              <div class="row">
+                <div class="col-xs-6 col-sm-4">
+                  <select class="form-control" name="cardMonth" ng-model="vm.cardMonth" required>
+                    <option value="" selected disabled>Month</option>
+                    <option ng-repeat="month in vm.months" value={{$index}}>{{('0' + ($index + 1)).slice(-2) +" ("+ month.substring(0,3) + ")"}}</option>
+                  </select>
+                  <span class="help-block" ng-show="myForm.cardMonth.$touched && myForm.cardMonth.$invalid">This field is required.</span>
+                </div>
+                <div class="col-xs-6 col-sm-4">
+                  <select class="form-control" name="cardYear" ng-model="vm.cardYear" required>
+                    <option value="" selected disabled>Year</option>
+                    <option ng-repeat="year in vm.cardYears" value={{year}}>{{year}}</option>
+                  </select>
+                  <span class="help-block" ng-show="myForm.cardYear.$touched && myForm.cardYear.$invalid">This field is required.</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>CVC * :</label>
+              <input type="text" class="form-control cvc" name="cardCvc" ng-model="vm.cardCvc" maxlength="5" required placeholder="CVC">
+              <span class="help-block" ng-show="myForm.cardCvc.$touched && myForm.cardCvc.$invalid">This field is required.</span>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-xs-12">
+                  <label>Amount:</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <h4>{{vm.amountPackage}}</h4>
+                </div>
+                <div class="col-xs-12">
+                  <div class="col-xs-6">
+                    <div class="amountCategory">
+                      <h5>{{vm.data.raceCategory}}</h5>
+                    </div>
+                  </div>
+                  <div class="col-xs-6 subamountPrize">
+                    <span>${{vm.data.raceAmount}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row" ng-if="vm.data.discount > 0">
+                <div class="col-xs-12">
+                  <h4>Promo Code</h4>
+                </div>
+                <div class="col-xs-12">
+                  <div class="col-xs-6">
+                    <div class="amountCategory">
+                        <h5>Discount {{vm.data.discount}}</h5>
+                    </div>
+                  </div>
+                  <div class="col-xs-6 subamountPrize">
+                    <span>-${{vm.data.discountPrice}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row" ng-if="vm.data.selectedMerchandises.length > 0">
+                <div class="col-xs-12">
+                  <h4>Merchandise</h4>
+                </div>
+                <div class="col-xs-12" ng-repeat="merchandise in vm.data.selectedMerchandises track by $index">
+                  <div class="col-xs-6">
+                    <div class="amountCategory">
+                      <h5>{{merchandise.name}} {{merchandise.hasVarianSize === 'Yes' ? merchandise.varian : ''}} (${{merchandise.price}} X {{merchandise.quantity}})</h5>
+                    </div>
+                  </div>
+                  <div class="col-xs-6 subamountPrize">
+                    <span>${{merchandise.price * merchandise.quantity}}</span>
+                  </div>
+                </div>
+              </div>    
+              <div class="row">
+                <div class="col-xs-6">
+                  <div class="amountCategory">
+                    <h4>Total Payment</h4>
+                  </div>
+                </div>
+                <div class="col-xs-6 amountPrize">
+                  <span>${{vm.data.amount}}</span>
+                </div>
+              </div>                  
+              <p class="info">
+                * This field is required!
+              </p>
+              <hr />
+              <div style="float:right">
+                <button type="button" class="btn btn-primary" ng-disabled="myForm.$invalid" ng-click="vm.submitForm()">Pay</button>
+              </div>
+            </div>
+          </div>
+          <div ng-if="vm.step === 4" class="respondRegistration">
+            <h1>Payment Success!</h1>
+            <p>Please check your email for your confirmation slip.<p>
+            <p>Confirmation slip usually takes about 1 - 5 minutes.<p>
+            <p>Or you can</p>
+            <p>
+              <a href="/confirmation" class="btn btn-primary" role="button" style="text-decoration: none;">Check your confirmation slip</a>
+            </p>
+            <p>
+              <a href="/" class="btn btn-default purple" role="button" style="text-decoration: none;">Back to Home</a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

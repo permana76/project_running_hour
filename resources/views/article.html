@@ -1,0 +1,23 @@
+<section id="section-article">
+  <h2>{{vm.article.title}}</h2>
+  <p class="date">Joined date: {{vm.article.joined}}</p> 
+  <hr>
+  <div class="article-content">
+    <div layout="row" layout-sm="column" layout-xs="column" layout-align="center start" layout-align-sm="start center" layout-align-xs="start center" layout-padding ng-repeat="detail in vm.article.detail" layout-wrap>
+      <div flex-gt-sm="30" flex-sm="100" flex-xs="100" ng-if="$index === 0">
+        <img ng-src="{{vm.article.image}}" alt="Picture of {{vm.article.title}}" style="width: 100%;">
+      </div>
+      <div flex-gt-sm="70" flex-sm="100" flex-xs="100" ng-if="$index === 0">
+        <h3>{{detail.question}}</h3>
+        <div ng-bind-html="vm.renderHtml(detail.answer)"></div>
+      </div>
+      <div flex ng-if="$index !== 0">
+        <h3>{{detail.question}}</h3>
+        <div ng-bind-html="vm.renderHtml(detail.answer)"></div>
+      </div>
+    </div>      
+  </div>
+
+  <a ui-sref="layout.articles.list({ type: 'featuredMembers' })">< Back to Articles</a>
+</section>
+  

@@ -1,0 +1,268 @@
+@font-face {
+  font-family: 'Gotham Book';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Gotham Book'), url('../fonts/gothambook.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Gotham Medium';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Gotham Medium'), url('../fonts/gotham-medium-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Gotham Thin';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Gotham Thin'), url('../fonts/gotham-thin.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Gotham Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Gotham Bold'), url('../fonts/gotham-bold-webfont.woff') format('woff');
+}
+
+body {
+  font-family: 'Gotham Book';
+  font-size: 14px;
+  height: 100%;
+  color: #4D4D4D;
+  background-color: #f0f0f0;
+  -webkit-text-size-adjust: none;
+  overflow-y: scroll;
+}
+
+a {
+  color: #5B337C;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+ol {
+  padding-left: 20px;
+}
+
+li a {
+  text-decoration: none;
+  font-weight: normal;
+}
+
+li a:hover {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+a.closebtn {
+  text-decoration: none;
+}
+
+p {
+  text-align: justify;
+}
+
+*:focus {
+  outline: none;
+}
+
+.bg-grey {
+  background-color: grey;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-normal {
+  font-weight: normal;
+}
+
+.right {
+  text-align: right;
+}
+
+.side {
+  float: right;
+}
+
+hr {
+  background-color: #bbbbbb;
+  height: 1px;
+  margin-bottom: 20px;
+}
+
+.categories {
+  color: #5B337C;
+  font-size: 60%;
+  font-family: 'Gotham Medium';
+  padding-bottom: 20px;
+}
+
+.more img {
+  width: 75px;
+}
+
+.more a {
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+  font-size: 80%;
+  width: 100%;
+}
+
+.img-width {
+  width: 100%;
+}
+
+.invisible {
+  border: 0;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  color: rgba(0, 0, 0, 0);
+}
+
+
+.layout,
+.layout-column,
+.layout-row {
+  box-sizing: border-box;
+  display: -webkit-flex;
+  display: -webkit-box !important;
+  display: flex
+}
+
+#loading {
+  display: none;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 101;
+}
+
+.lds-ellipsis {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -32px;
+  width: 64px;
+  height: 64px;
+}
+
+.lds-ellipsis div {
+  position: absolute;
+  top: 27px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #fff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.lds-ellipsis div:nth-child(1) {
+  left: 6px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(2) {
+  left: 6px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(3) {
+  left: 26px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(4) {
+  left: 45px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(19px, 0);
+  }
+}
+
+@media (max-width: 1024px) {
+   ::-webkit-scrollbar {
+    width: 5px;
+    height: 17px;
+  }
+
+   ::-webkit-scrollbar-track {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+  }
+
+   ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+  }
+}
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+
+.slick-next:before, .slick-prev:before {
+    color: #000;
+}
+
+@media (min-width: 960px) {
+  .flex-gt-sm-80,
+  .layout-row>.flex-gt-sm-80 {
+    width: 80%;
+  }
+}

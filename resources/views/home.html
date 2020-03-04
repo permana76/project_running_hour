@@ -1,0 +1,151 @@
+<section id="section-banner">
+  <div layout="row">
+    <div flex>
+      <div uib-carousel active="mainCarousel" interval="0" no-wrap="noWrapSlides">
+        <div uib-slide ng-repeat="slide in vm.mainCarousel track by slide.id" index="slide.id">
+          <!-- <a href="{{slide.url}}" target="_blank"> -->
+            <img ng-src="{{slide.image}}" class="slide" alt="{{slide.label}}" ng-show="!isMobile">
+            <img ng-src="{{slide.imageM}}" class="slide" alt="{{slide.label}}" ng-show="isMobile">
+          <!-- </a> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="section-timer">
+  <div layout="column" layout-padding ng-show="{{!vm.eventEnded}}">
+    <div class="title" flex>
+      Run For Inclusion 2020 on 15 August Saturday <br>
+      Look out for details in our Race Website
+    </div>
+    <div class="numbers" flex>
+      <div class="numbers" layout="row" layout-align="center center" flex>
+        <div flex="20" class="number">
+          <div>{{vm.days}}</div>
+          <div class="more">DAYS</div>
+        </div>
+        <div class="dot" flex>:</div>
+        <div flex="20" class="number">
+          <div>{{vm.hours}}</div>
+          <div class="more">HOURS</div>
+        </div>
+        <div class="dot" flex>:</div>
+        <div flex="20" class="number">
+          <div>{{vm.minutes}}</div>
+          <div class="more">MINUTES</div>
+        </div>
+        <div class="dot" flex>:</div>
+        <div flex="20" class="number">
+          <div>{{vm.seconds}}</div>
+          <div class="more">SECONDS</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div layout="column" layout-padding ng-show="{{vm.eventEnded}}">
+    <div class="title" flex>
+      <!-- RUNNING<strong style="color: yellow">HOUR</strong><strong> 2020 </strong>REGISTRATION HAS ENDED ! -->
+      Run For Inclusion 2020 on 15 August Saturday <br /> Look out for details in our Race Website
+    </div>
+    <div class="numbers" flex>
+      <!-- <center>Thank you for all people who participated in this event, we'll meet again next year</center> -->
+    </div>
+  </div>
+</section>
+<section id="section-about" class="about-2">
+  <div layout="column" layout-align="center center" class="about-content">
+    <p style="border: 3px solid yellow; padding: 10px;">Full refund if race is cancelled</p>
+    <div flex="75" flex-sm="75" class="text">
+      <p>RUNNING<strong style="color:yellow">HOUR</strong> is an inclusive running club, promoting integration
+      of people with special needs through running.</p>
+      <p>We have friends who are mildly intellectually challenged, physically challenged, hearing challanged, and visually challenged joining us to keep fit.</p>
+      <p>We welcome anyone passionate about running to join us as running guides.</p>
+    </div>
+    <div flex="25" flex-sm="25" class="more">
+      <img src="resources/img/circle2.svg">
+      <a class="about-more" ui-sref="layout.about">READ MORE</a>
+    </div>
+  </div>
+</section>
+<section id="section-about" class="about-1">
+  <div layout="column" layout-align="center center" class="about-content">
+    <div flex="75" flex-sm="75" class="text">
+      <p><strong>RUN FOR INCLUSION</strong> <strong>2020</strong> is a national event that aims to use mainstream sports as a platform to promote integration and nurture an inclusive Singapore for the people with special needs. This is the only race in Singapore where participants run alongside other runners with special needs. </p>
+      <p>To encourage them to join this race, Runninghour is offering free entries for all people with special needs. RUN FOR INCLUSION 2020 will be a rallying call for Singaporeans to come together and show their support towards integrating people with special needs. </p>
+    </div>
+    <div flex="25" flex-sm="25" class="more">
+      <a class="about-more" ui-sref="layout.race">LEARN MORE</a>
+      <img src="resources/img/circle2.svg">
+    </div>
+  </div>
+</section>
+<section id="section-articles">
+  <h3 class="title">LATEST ARTICLES</h3>
+  <hr>
+  <div layout="column" layout-align="center center" class="articles-content">
+    <div flex="75">
+      <div layout="row" layout-xs="column" layout-padding ng-repeat="article in vm.articles | limitTo: 4">
+        <div flex-gt-sm="20" flex-sm="40" flex-xs="100">
+          <img ng-src="{{article.imageThumb}}" alt="Picture of {{article.title}}" style="width:100%">
+        </div>
+        <div flex-gt-sm="80" flex-sm="60" flex-xs="100" ng-if="article.type === 'featuredMembers'">
+          <div class="article-title">{{article.title}}</div>
+          <p class="date">Joined Date: {{article.joined}}</p> 
+          <p class="text"><strong>{{article.name}}</strong>: {{article.content}}</p>
+          <a ui-sref="layout.articles.view({ type: 'featuredMembers', id: article.id })">Read More</a>
+        </div>
+        <div flex-gt-sm="80" flex-sm="60" flex-xs="100" ng-if="article.type === 'media'">
+          <div class="article-title">{{article.title}}</div>
+          <p class="date">{{article.joined}}</p> 
+          <p class="text">{{article.content}}</p>
+          <a href="{{article.url}}" target="_blank">Read More</a>
+        </div>
+        <div flex-gt-sm="100" flex-sm="100" flex-xs="100" ng-if="article.type === 'newsletter'">
+          <div class="article-title">{{article.title}}</div>
+          <a href="{{article.url}}" target="_blank">Download</a>
+          <br><br><br><br>
+        </div>
+      </div>
+    </div>
+    <div flex="25" class="more">
+      <img src="resources/img/circle2.svg">
+      <a class="articles-more" ui-sref="layout.articles.list({ type: undefined })">VIEW ALL ARTICLES</a>
+    </div>
+  </div>
+</section>
+<section id="section-sponsors">
+  <div layout="row" layout-xs="column" layout-padding layout-align="center top">
+    <div flex-gt-sm="50" flex-sm="50" flex-xs="100">
+      <div class="sponsor-title">ORGANISED BY</div>
+      <div class=frame>
+        <span class="helper"></span><img src="resources/img/sponsor/logo_runninghour.jpg" alt="Running Hour">
+      </div>
+    </div>
+    <div flex-gt-sm="50" flex-sm="50" flex-xs="100">
+      <div class="sponsor-title">SUPPORTED BY</div>
+      <div layout="row" layout-xs="column" layout-padding>
+        <div flex-gt-sm="50" flex-sm="50" flex-xs="100">
+          <div class=frame>
+            <span class="helper"></span><img src="resources/img/sponsor/sncf.jpg" alt="SNCF">
+          </div>
+        </div>
+        <div flex-gt-sm="50" flex-sm="50" flex-xs="100">
+          <div class=frame>
+            <span class="helper"></span><img src="resources/img/sponsor/centralsingaporecdc.png" alt="Central Singapore CDC">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <slider ng-model="vm.sponsorCarousel"></slider>
+  <hr>
+  <div class="sponsor-title">SPONSORS</div>
+    <div layout="row" layout-xs="column" layout-padding layout-align="space-between center">
+      <div class="frame" flex-sm="25">
+        <span class="helper"></span><img src="resources/img/sponsor/jcci.jpg" alt="JCCI Singapore" style="width: 80%;">
+      </div>
+    </div>
+  </div>
+  <hr>
+<!-- <a class="register-float" ui-sref="layout.registration()"></a> -->

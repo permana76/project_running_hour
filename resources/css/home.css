@@ -1,0 +1,277 @@
+/*============BANNER===========*/
+
+#section-banner {
+  height: 75vh;
+  background-color: #292929;
+}
+
+.slide {
+  position: relative;
+  height: 75vh;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.carousel .item,.carousel-inner {
+  height: 100%;
+  background: #292929;
+}
+
+.carousel-caption img {
+  padding-top: 15px;
+}
+
+.carousel-indicators li {
+  margin-left: 5px;
+}
+
+.carousel-indicators li.active {
+  margin-left: 5px;
+  background-color: #174770;
+}
+
+.carousel-control.left,.carousel-control.right {
+  background-image: none;
+}
+
+@media (max-width: 900px) {
+  #section-banner {
+    height: auto;
+  }
+
+  .slide {
+    height: auto;
+  }
+}
+
+/*==========BANNER END=============*/
+
+/*==========TIMER==================*/
+
+#section-timer {
+  color: white;
+  background-color: #292929;
+  text-align: center;
+  font-family: 'Gotham Thin';
+  font-weight: 600;
+  padding-bottom: 10px;
+}
+
+#section-timer .title {
+  font-family: 'Gotham Thin';
+  color: #fff;
+  padding-top: 8px;
+}
+
+#section-timer .numbers {
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+.number {
+  font-size: 350%;
+  width: 100px;
+}
+
+.number .more {
+  font-size: 20%;
+}
+
+.dot {
+  font-size: 350%;
+}
+
+@media (max-width: 600px) {
+  #section-timer .numbers {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+
+  #section-timer .title {
+    font-size: 5vw;
+  }
+
+  .number {
+    font-size: 8vw;
+  }
+
+  .dot {
+    font-size: 8vw;
+  }
+}
+
+/*==========TIMER END==============*/
+
+/*==========ABOUT==================*/
+
+#section-about {
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  padding: 100px 5%;
+  font-size: 180%;
+  text-align: center;
+}
+
+.about-1 {
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.6), 
+      rgba(0, 0, 0, 0.6)
+    ), url('../img/bg1.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.about-2 {
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.4), 
+      rgba(0, 0, 0, 0.4)
+    ), url('../img/bg3.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.about-content {
+}
+
+.about-content .text {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.about-content .text p {
+  text-align: center;
+}
+
+.about-content .more {
+  position: relative;
+  padding-top: 100px;
+  padding-bottom: 25px;
+  width: 100%;
+}
+
+.about-more {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  #section-about {
+    font-size: 130%;
+  }
+
+  .about-content {
+    
+  }
+}
+
+/*===========ABOUT END=============*/
+
+/*===========ARTICLES==============*/
+#section-articles {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f8f8f8;
+  padding: 50px 10%;
+  color: white;
+  font-size: 180%;
+}
+
+#section-articles h2 {
+  color: #5B337C;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  font-size: 26px
+}
+
+.title {
+  font-family: 'Oswald', sans-serif;
+  color: #5b327b;
+  font-size: 150%;
+}
+
+.articles-content {
+  margin-bottom: 30px;
+  color: #000;
+  font-family: 'Roboto', sans-serif;
+  font-size: 60%;
+}
+
+.articles-content .articles-all {
+  margin-bottom: 50px;
+}
+
+.articles-content .date {
+  font-size: 80%;
+  font-style: italic;
+}
+
+#section-articles .more {
+  position: relative;
+  padding-top: 100px;
+  padding-bottom: 25px;
+  width: 100%;
+  text-align: center;
+  font-size: 140%;
+}
+
+.articles-more {
+  position: relative;
+  z-index: 1;
+  color: #777;
+}
+
+/*=======END ARTICLES=========*/
+
+/*=======SPONSORS=============*/
+#section-sponsors {
+  height: auto;
+  padding: 50px 10%;
+  text-align: center;
+  background-color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  color: #000;
+}
+
+.sponsor-img {
+  padding-bottom: 40px;
+}
+
+.sponsor-title {
+  padding-bottom: 15px;
+}
+
+.helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.frame {
+  height: 150px;
+  white-space: nowrap;
+  transition: all ease-in-out 0.2s;
+}
+
+.frame img {
+  vertical-align: middle;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.frame.ng-enter {
+  opacity: 0;
+}
+
+.frame.ng-leave {
+  opacity: 1;
+}
+
+.frame.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+
+.frame.ng-leave.ng-leave-active {
+  opacity: 0;
+}

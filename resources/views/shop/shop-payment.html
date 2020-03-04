@@ -1,0 +1,177 @@
+<section id="section-shop-payment">
+  <div class="shop-button">
+    <a ui-sref="layout.shop" type="button" class="btn btn-primary btn-circle btn-home">
+      <img src="/resources/img/shop-home.svg" />
+      <md-tooltip md-direction="bottom">Shop Home</md-tooltip>
+    </a>
+    <a ui-sref="layout.cart" type="button" class="btn btn-primary btn-circle btn-cart">
+      <img src="/resources/img/shop-cart.svg" />
+      <md-tooltip md-direction="bottom">Cart</md-tooltip>
+    </a>
+    <span class="badge badge-danger" ng-if="vm.cartTotal !== 0">{{vm.cartTotal}}</span>
+  </div>
+  <div class="container">
+    <div class="payment" ng-if="vm.cart != null && (vm.step === 1 || vm.step === 2)">
+      <h4>PAYMENT FORM </h4>
+      <div class="row first-row">
+        <div class="col-xs-12 col-sm-7">
+          <form name="shopForm" ng-submit="vm.submitForm()" novalidate>
+            <div ng-if="vm.step === 1" class="paymentForm">
+              <div class="form-group">
+                <label>Full Name * :</label>
+                <input type="text" class="form-control" placeholder="Type your Full Name here" name="fullName" ng-model="vm.fullName" required>
+                <span class="help-block" ng-show="shopForm.fullName.$touched && shopForm.fullName.$invalid">This field is required.</span>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Contact Number * :</label>
+                    <input type="tel" pattern='^\+?\d{0,13}' class="form-control" ng-minlength="10" placeholder="Type your Contact Number here" name="contact" ng-model="vm.contact" required>
+                    <span class="help-block" ng-show="!shopForm.contact.$error.pattern && !shopForm.contact.$error.minlength && shopForm.contact.$touched && shopForm.contact.$invalid">This field is required.</span>
+                    <span class="help-block" ng-show="!shopForm.contact.$error.pattern && shopForm.contact.$error.minlength">Phone no not less that 10 char.</span>
+                    <span class="help-block" ng-show="shopForm.contact.$error.pattern">Please enter your phone number.</span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Email Address * :</label>
+                    <input type="email" class="form-control" placeholder="Type your Email here" name="email" ng-model="vm.email" required>
+                    <span class="help-block" ng-show="shopForm.email.$touched && shopForm.email.$error.required">This field is required.</span>
+                    <span class="help-block" ng-show="shopForm.email.$touched && shopForm.email.$error.email">Invalid email address format.</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label>Address * :</label>
+                    <textarea class="form-control" rows="4" name="address" ng-model="vm.address" placeholder="Type your Address here" required></textarea>
+                    <span class="help-block" ng-show="shopForm.address.$touched && shopForm.address.$invalid">This field is required.</span>
+                  </div>
+                </div>
+              </div>
+              <p class="info">
+                * This field is required!
+              </p>
+              <hr />
+              <div style="text-align:right">
+                <button type="button" class="btn btn-primary" ng-disabled="shopForm.$invalid" ng-click="vm.next()">Next</button>
+              </div>
+            </div>
+            <div ng-if="vm.step === 2" class="paymentStripe">
+              <div class="form-group">
+                <label>Card Number * :</label>
+                <input type="text" class="form-control" name="cardNumber" ng-model="vm.cardNumber" pattern="[0-9.]+" required placeholder="Type your Card Number">
+                <span class="help-block" ng-show="shopForm.cardNumber.$error.pattern">This field should be number!</span>
+                <span class="help-block" ng-show="shopForm.cardNumber.$touched && shopForm.cardNumber.$error.required">This field is required.</span>
+                <div class="cardLogos">
+                  <img class="cardLogo" ng-show="vm.getCardType() === 'Amex'" src="resources/img/registration/amex.jpg" />
+                  <img class="cardLogo" ng-show="vm.getCardType() === 'Diners'" src="resources/img/registration/diners.jpg" />
+                  <img class="cardLogo" ng-show="vm.getCardType() === 'Discover'" src="resources/img/registration/discover.jpg" />
+                  <img class="cardLogo" ng-show="vm.getCardType() === 'JCB'" src="resources/img/registration/jcb.jpg" />
+                  <img class="cardLogo" ng-show="vm.getCardType() === 'Mastercard'" src="resources/img/registration/mastercard.jpg" />
+                  <img class="cardLogo" ng-show="vm.getCardType() === 'Visa'" src="resources/img/registration/visa.jpg" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Expiration Date * :</label>
+                <div class="row">
+                  <div class="col-xs-6 col-sm-4">
+                    <select class="form-control" name="cardMonth" ng-model="vm.cardMonth" required>
+                      <option value="" selected disabled>Month</option>
+                      <option ng-repeat="month in vm.months" value={{$index}}>{{('0' + ($index + 1)).slice(-2) +" ("+ month.substring(0,3) + ")"}}</option>
+                    </select>
+                    <span class="help-block" ng-show="shopForm.cardMonth.$touched && shopForm.cardMonth.$invalid">This field is required.</span>
+                  </div>
+                  <div class="col-xs-6 col-sm-4">
+                    <select class="form-control" name="cardYear" ng-model="vm.cardYear" required>
+                      <option value="" selected disabled>Year</option>
+                      <option ng-repeat="year in vm.cardYears" value={{year}}>{{year}}</option>
+                    </select>
+                    <span class="help-block" ng-show="shopForm.cardYear.$touched && shopForm.cardYear.$invalid">This field is required.</span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>CVC * :</label>
+                <input type="text" class="form-control cvc" name="cardCvc" ng-model="vm.cardCvc" maxlength="5" required placeholder="CVC">
+                <span class="help-block" ng-show="shopForm.cardCvc.$touched && shopForm.cardCvc.$invalid">This field is required.</span>
+              </div>
+              <div class="form-group payment-button">
+                <button type="button" class="btn btn-default" ng-click="vm.back()">Back</button>
+                <button type="button" class="btn btn-primary" ng-disabled="shopForm.$invalid" ng-click="vm.submitForm()">Send</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-xs-12 col-sm-5">
+          <div class="summary">
+            <div class="summaryTitle">
+              <h4 class="cartTitle">SUMMARY</h4>
+            </div>
+            <div class="summaryContent">
+              <div class="row">
+                <div class="col-xs-8 col-sm-7">
+                  <h4>Subtotal</h4>
+                </div>
+                <div class="col-xs-4 col-sm-5">
+                  SGD {{vm.subtotal.toFixed(2)}}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-8 col-sm-7">
+                  <h4>Delivery</h4>
+                </div>
+                <div class="col-xs-4 col-sm-5">
+                  Free
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-8 col-sm-7">
+                  <h4>Total</h4>
+                </div>
+                <div class="col-xs-4 col-sm-5">
+                  SGD {{vm.subtotal.toFixed(2)}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="review">
+            <div class="reviewTitle">
+              <h4 class="cartTitle">IN YOUR CART</h4>
+            </div>
+            <div class="reviewContent">
+              <div class="row" ng-repeat="cart in vm.cart">
+                <div class="col-xs-8">
+                  <h5 class="product-name">{{cart.name}}</h5>
+                  <div class="discount" ng-if="cart.discount !== 0">
+                      <h5> SGD {{vm.getDiscountResult(cart.price, cart.discount, cart.quantity)}} </h5>
+                  </div>
+                  <div class="noDiscount" ng-if="cart.discount === 0">
+                      <h5>SGD {{(cart.price * cart.quantity).toFixed(2)}}</h5>
+                  </div>
+                </div>
+                <div class="col-xs-4">
+                  <p class="quantity">({{cart.quantity}} {{cart.quantity == 1 ? "pc" : "pcs"}})</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="payment-success" ng-if="vm.step === 3">
+      <div class="row">
+        <div class="col-xs-12">
+          <h4>YOUR PAYMENT HAS BEEN DONE SUCCESSFULLY</h4>
+          <div class="success-info">
+            <p>Further information will be sent to your email.</p>
+          </div>
+          <a ui-sref="layout.shop" class="btn btn-primary" role="button">
+            <span class="glyphicon glyphicon-menu-left"></span> Back to Shop Page
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,28 @@
+{
+  "hosting": {
+    "public": "/",
+    "headers": [
+      {
+        "source":
+          "**/*.@(js|css)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "must-revalidate, max-age=600"
+          }
+        ]
+      }
+    ],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

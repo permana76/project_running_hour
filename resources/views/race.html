@@ -1,0 +1,654 @@
+<section id="section-race">
+  <div id="empathy" class="content">
+    <h2>Race Details</h2>
+    <hr>
+    <div class="table-responsive">
+      <table class="table table-scroller">
+        <tr>
+          <td colspan="2">
+            <strong>RUN FOR INCLUSION 2020</strong>
+          </td>
+        </tr>
+        <tr>
+          <td width="25%">
+            <b>Date</b>
+          </td>
+          <td>
+              15 August 2020 Saturday
+          </td>
+        </tr>
+        <tr>
+          <td width="25%">
+            <b>Time</b>
+          </td>
+          <td>1pm to 7pm</td>
+        </tr>
+        <tr>
+          <td width="25%">
+            <b>Venue</b>
+          </td>
+          <td>Jurong Lake Gardens</td>
+        </tr>
+        <tr>
+          <td width="25%">
+            <b>Race Village</b>
+          </td>
+          <td>PAssion WaVe @ Jurong Lake Gardens</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div id="empathy" class="content">
+    <h2>Empathy Run Segment (optional but encouraged)
+    </h2>
+    <hr>
+    <!-- Empathy Segment details TBC. -->
+    <!-- <div style="text-align: center;">
+      <video width="600" controls>
+        <source src="visual_challenge.mp4" type="video/mp4">
+      </video>
+      <br/>
+      <video width="600" controls>
+        <source src="celebral_palsy.mp4" type="video/mp4">
+      </video>
+      <br/>
+      <video width="600" controls>
+        <source src="autism_tunnel.mp4" type="video/mp4">
+        <source src="autism_tunnel.ogg" type="video/ogg">
+      </video>
+    </div> -->
+    <div class="subcontent">
+      <div>
+        <h3>1. Autism Tunnel</h3>
+        <div style="text-align: center;">
+          <iframe width="100%" height="400" src="https://www.youtube.com/embed/SPDYaLtIzBc" frameborder="0" allowfullscreen="allowfullscreen" style="max-width: 600px;"></iframe>
+        </div>
+      </div>
+      <div>
+        <h3>2. Blindfold Run</h3>
+        <div style="text-align: center;">
+          <iframe width="100%" height="400" src="https://www.youtube.com/embed/JyspfNQ6jQA" frameborder="0" allowfullscreen="allowfullscreen" style="max-width: 600px;"></iframe>
+        </div>
+      </div>
+      <div>
+        <h3>3. Cerebral Palsy Challenge</h3>
+        <div style="text-align: center;">
+          <iframe width="100%" height="400" src="https://www.youtube.com/embed/w5O_XWGY97g" frameborder="0" allowfullscreen="allowfullscreen" style="max-width: 600px;"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="categories" class="content">
+    <h2>Categories & Fees</h2>
+    <hr>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <tr>
+          <th colspan="2" rowspan="2">Race Category</th>
+          <th rowspan="2">Flag-Off Timings</th>
+          <th colspan="2">Throughout Registration Period</th>
+          <th rowspan="2">Early Bird
+            <br>
+            <span class="more_info">(2 months from launch date)</span></th>
+          <th rowspan="2">Normal Registration
+            <br>
+            <span class="more_info">(TBC)</span></th>
+        </tr>
+        <tr>
+          <th>PWSN</th>
+          <th>Caregiver
+            <br>
+            <span class="more_info">(max 1 per PWSN)</span></th>
+        </tr>
+        <tr ng-repeat="(key, raceCategory) in vm.raceCategories" ng-if="$index < 5">
+          <td width="5%">{{$index + 1}}.</td>
+          <td width="40%" style="text-align: left">
+            <span ng-if="raceCategory.CLOSED" class="alert_info">{{raceCategory.LABEL}} <b>Fully Booked</b></span>
+            <span ng-if="!raceCategory.CLOSED">{{raceCategory.LABEL}}</span>
+          </td>
+          <td>{{raceCategory.TIME}}</td>
+          <td>{{raceCategory.PWSN}}</td>
+          <td>{{raceCategory.CAREGIVER}}</td>
+          <td>{{!raceCategory.EARLY_BIRD_FEE ? 'NA' : '$' + raceCategory.EARLY_BIRD_FEE}}</td>
+          <td>{{!raceCategory.FEE ? 'NA' : '$' + raceCategory.FEE}}</td>
+        </tr>
+        <tr>
+          <td width="5%">6.</td>
+          <td width="40%" style="text-align: left">
+            20km Cycling (Need rental bike with helmet)<br/>
+            <!-- - <span class="alert_info">Need rental bike with helmet (provided at a cost of $8) <b>Fully Booked</b></span><br/>
+            - <span class="alert_info">Tandem bike required (For PWSN only) <b>Fully Booked</b></span> -->
+            - <span >Provided at a cost of $8</span>
+          </td>
+          <td>{{vm.raceCategories.RACE_CATEGORY_20KM_SINGLE_BIKE.TIME}}</td>
+          <td>{{vm.raceCategories.RACE_CATEGORY_20KM_SINGLE_BIKE.PWSN}}</td>
+          <td>{{vm.raceCategories.RACE_CATEGORY_20KM_SINGLE_BIKE.CAREGIVER}}</td>
+          <td>${{vm.raceCategories.RACE_CATEGORY_20KM_SINGLE_BIKE.EARLY_BIRD_FEE}}</td>
+          <td>${{vm.raceCategories.RACE_CATEGORY_20KM_SINGLE_BIKE.FEE}}</td>
+        </tr>
+        <tr>
+          <td width="5%">7.</td>
+          <td width="40%" style="text-align: left">
+            Tandem Cycling (For PWSN only)<br/>
+            - <span >Bike Captain will be assigned</span>
+          </td>
+          <td>{{vm.raceCategories.RACE_CATEGORY_20KM_TANDEM_BIKE.TIME}}</td>
+          <td>{{vm.raceCategories.RACE_CATEGORY_20KM_TANDEM_BIKE.PWSN}}</td>
+          <td>{{vm.raceCategories.RACE_CATEGORY_20KM_TANDEM_BIKE.CAREGIVER}}</td>
+          <td>NA</td>
+          <td>NA</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="content" id="race_pack">
+    <h2>RACE PACK COLLECTION</h2>
+    <hr>
+    <div class="table-responsive">
+      <table class="table table-scroller">
+        <tr>
+          <td width="25%">
+            <b>Venue</b>
+          </td>
+          <td>
+            TBC (To be confirmed)
+          </td>
+        </tr>
+        <tr>
+          <td width="25%">
+            <b>Date</b>
+          </td>
+          <td>1 & 2 August 2020</td>
+        </tr>
+        <tr>
+          <td width="25%">
+            <b>Time</b>
+          </td>
+          <td>12pm to 8pm</td>
+        </tr>
+        <tr>
+          <td width="25%">
+            <b>Getting There</b>
+          </td>
+          <td>TBC (To be confirmed)</td>
+        </tr>
+      </table>
+      <p>
+        If someone is collecting your race packs on your behalf, do download and complete the Authorisation Letter and bring it along for the collection. The form will be available for
+        <a href="resources/files/runninghour2019-authorisationletter.pdf" target="_blank">
+          <strong>download here</strong>
+        </a>.
+      </p>
+
+    </div>
+  </div>
+  <div class="content" id="registration">
+    <h2>REGISTRATION</h2>
+    <hr>
+    <!-- Registration Already closed -->
+    <ol>
+      <li><p>
+        Online Participant Registration - please <a ui-sref="layout.registration()"><strong>CLICK HERE</strong></a> for online participant registration or click <img src="resources/img/register-mobile.png" /> on every page of the race website.
+      </p></li>
+      <li><p>
+        For Persons with Special Needs (PWSN) & Caregivers, please click <a href="http://bit.ly/RunForInclusion2020" target="_blank" rel="noopener noreferrer"><strong>http://bit.ly/RunForInclusion2020</strong></a>. A promo code will be sent via Whatsapp/Email to you. Registration will only be completed after both PWSN & Caregiver have submitted the Online Participant Registration from our Race Website using the Promocode.
+        <!-- For People With Special Need & Caregiver, please click on the link below <a href="http://bit.ly/RunForInclusion2020" target="_blank" rel="noopener noreferrer"><strong>http://bit.ly/RunForInclusion2020</strong></a><br />
+        A Promocode will be sent via Whatsapp/Email to you. Registration will only be completed after both People with Special Need & Caregiver have submitted the Online Participant Registration from our Race Website using the Promocode. -->
+      </p></li>
+      <li><p>
+        For Corporates, please register online. If you have more than 20 participants, please email to <a href="mailto:raceinfo@runninghour.com"><strong>raceinfo@runninghour.com</strong></a>
+        <!-- For Corporate : Can register online or offline, please email to <a href="mailto:raceinfo@runninghour.com"><strong>raceinfo@runninghour.com</strong></a> for registration form. -->
+      </p></li>
+    </ol>
+  </div>
+  <!-- <div class="content" id="confirmation">
+    <h2>CONFIRMATION SLIP</h2>
+    <hr>
+    <a ui-sref="layout.confirmation()" class="btn btn-primary" role="button">View Confirmation Slip</a>
+  </div> -->
+  <div class="content" id="runners">
+    <h2>RUNNER'S ENTITLEMENT</h2>
+    <hr>
+    Medal,Event T-shirt,Tether,Eye Mask
+    <!-- <img class="tshirt-img" src="resources/img/race/tshirt2019.png"/>
+    <div class="subcontent">
+      <h3>Chart Size</h3>
+      <div class="table-responsive" id="table-tshirt-size">
+        <table class="table text-normal" style="width: 100%; margin-top: 30px;">
+          <tbody>
+            <tr>
+              <th colspan="10" class="top-table left-table right-table">
+                UNISEX SIZES SPECIFICATION
+              </th>
+            </tr>
+            <tr>
+              <td colspan="10" class="bottom-table left-table right-table">
+                SIZE SPECIFICATION: INCHES
+              </td>
+            </tr>
+            <tr>
+              <td class="left-table">*DESCRIPTION</td>
+              <td>2XS</td>
+              <td>XS</td>
+              <td>S</td>
+              <td>M</td>
+              <td>L</td>
+              <td>XL</td>
+              <td>2XL</td>
+              <td>3XL <span class="alert_danger"><b>Fully Ordered</b></span></td>
+              <td class="right-table">4XL <span class="alert_danger"><b>Fully Ordered</b></span></td>
+            </tr>
+            <tr>
+              <td class="left-table">CHEST</td>
+              <td>16.5</td>
+              <td>17.5</td>
+              <td>18.5</td>
+              <td>19.5</td>
+              <td>20.5</td>
+              <td>21.5</td>
+              <td>22.5</td>
+              <td>23.5</td>
+              <td class="right-table">24.5</td>
+            </tr>
+            <tr>
+              <td class="left-table">LENGTH</td>
+              <td>23.5</td>
+              <td>24.5</td>
+              <td>25.5</td>
+              <td>26.5</td>
+              <td>27.5</td>
+              <td>28.5</td>
+              <td>29.5</td>
+              <td>30.5</td>
+              <td class="right-table">31.5</td>
+            </tr>
+            <tr>
+              <td colspan="10" class="bottom-table left-table right-table">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div>Note: size may varies +/- 5% from the above mentioned chart.</div>
+      </div>
+    </div>
+    <div class="subcontent">
+      <h3>Special Edition Eye-mask</h3>
+      <img class="medal-img" src="resources/img/race/blindfold.JPG">
+    </div>
+    <div class="subcontent">
+      <h3>Finisher medal for All Distances</h3> -->
+      <!-- <p>Design to be confirmed</p> -->
+      <!-- <img class="medal-img" src="resources/img/race/key-chain-medal-with-lanyard.png">
+    </div> -->
+  </div>
+  <div class="content" id="route">
+    <h2>RUNNING ROUTE</h2>
+    <hr>
+    <div class="subcontent">
+      <div class="row">
+        <ul>
+          <li>Start and Finish at PAssionWaVe @ Jurong Lake Gardens</li>
+          <li>Wheelchair Friendly</li>
+        </ul>
+        <div class="col-lg-12">
+          <h4>10km Route</h4>
+          <img align="middle" src="resources/img/race/runningroute10km.jpg" style="margin-bottom:20px;"/>
+        </div>
+        <div class="col-lg-12">
+          <h4>5km Route</h4>
+          <img align="middle" src="resources/img/race/runningroute5km.jpg" style="margin-bottom:20px;"/>
+        </div>
+        <div class="col-lg-12">
+          <h4>3km Route</h4>
+          <img align="middle" src="resources/img/race/runningroute3km.jpg" style="margin-bottom:20px;"/>
+        </div>
+        <div class="col-lg-12">
+          <h4>Personalised Route</h4>
+          <img align="middle" src="resources/img/race/runningroutepersonalised.jpg" style="margin-bottom:20px;"/>
+        </div>
+        <div class="col-lg-12">
+          <h4>20km Cycling Route</h4>
+          <img align="middle" src="resources/img/race/runningroutecycling.jpg" style="margin-bottom:20px;"/>
+        </div>
+      </div>
+      <!-- <iframe name="plotaroute_map_359991" src="https://www.plotaroute.com/embedmap/359991" frameborder="0" scrolling="no" width="100%" height="400" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen
+      style="max-width: 600px;"></iframe> -->
+    </div>
+  </div>
+  <div class="content" id="integration">
+    <h2>INTEGRATION WORKSHOPS</h2>
+    <hr>
+    <p>We will be conducting integration workshops to raise awareness for guiding people with special needs to participate in mainstream sports activities. "Sole Mates" is a programme supported by Central Singapore CDC to promote the integration of
+      special needs individuals with the community through sports. "Sole Mates" promote the relationship of buddies/soulmates where friendship is forged and deepened through sports activities between a special need participant and his/her sports partner.</p>
+    <p>Participants of the workshop can choose to partner a person with special needs on race day.</p>
+    <p>You could have the option to grab our past event t-shirt for just $10! Do support by attending our Integration Workshop for FREE so that you could know more about guiding person with special needs!</p>
+    <div class="table-responsive">
+      <table class="table" style="width:100%">
+        <tr>
+          <th></th>
+          <!-- <th><span class="line_through">Workshop 1</span> <span class="alert_danger"><b>Fully Booked</b></span></th>
+          <th><span class="line_through">Workshop 2</span> <span class="alert_danger"><b>Fully Booked</b></span></th> -->
+          <th><span>Workshop 1</span></th>
+          <th><span>Workshop 2</span></th>
+        </tr>
+        <tr>
+          <th>Date</th>
+          <td>Saturday, 1st August 2020</td>
+          <td>Sunday, 2nd August 2020</td>
+        </tr>
+        <tr>
+          <th>Time</th>
+          <td>1pm to 3pm</td>
+          <td>1pm to 3pm</td>
+        </tr>
+        <tr>
+          <th>Venue</th>
+          <td>TBC</td>
+          <td>TBC</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="content" id="getting">
+    <h2>GETTING THERE</h2>
+    <hr>
+    <div class="subcontent">
+      <h3>Getting to Jurong Lake Gardens</h3>
+      <p><span class="text-bold">Bus Services</span></p>
+      <img style="margin-bottom: 15px" width="300px" src="resources/img/race/getting_there_bus_service.png"/>
+      <!-- <ul>
+        <li>382W or 84 from Punggol Temporary Bus Interchange</li>
+      </ul> -->
+      <p><span class="text-bold">Carpark<span class="text-bold"></p>
+      <img style="margin-bottom: 15px" width="300px" src="resources/img/race/getting_there_carpark.png"/>
+      <p><span class="text-bold">Mass Rapid Transit<span class="text-bold"></p>
+      <ul>
+        <li>Nearest MRT: Lakeside MRT
+        </li>
+      </ul>
+      <!-- <img width="300px" src="resources/img/race/getting_there_punggol_safra.png"/> -->
+      <p>3 minutes walk from MRT Station. From Lakeside station take Exit A and walk in the sheltered pathway to the North Entrance of Lakeside Gardens</p>
+      <p>Bus Pick up Points at various MRT Stations for Person With Special Needs & Caregivers Only. Please call us at 90505398 if you need any assistance.</p>
+      <!-- <p>Click <a href="resources/files/bus-pickup-point.pdf" target="_blank">here</a> to download the bus pick up points detail</p> -->
+
+      <div layout="row" layout-xs="column" layout-align="start center" layout-padding layout-wrap style="display: flex !important;">
+        <div flex-gt-sm="33" flex-sm="33" flex-xs="100" ng-repeat="img in vm.raceImages">
+          <!-- <div ng-click="vm.view($index, $event)"><img ng-src="{{img.image}}" alt="{{img.label}}" style="width: 100%"></div> -->
+          <div><img ng-src="{{img.image}}" alt="{{img.label}}" style="width: 100%"></div>
+        </div>
+      </div>
+
+      <!-- <div style="visibility: hidden" ondragstart="return false;" ondrop="return false;">
+        <div class="md-dialog-container" id="viewImageRace">
+          <md-dialog class="race-dialog">
+            <div class="close-btn" ng-click="vm.close()">
+              &times;
+            </div>
+            <div class="prev glyphicon glyphicon-chevron-left" ng-click="vm.previous()">
+            </div>
+            <div class="next glyphicon glyphicon-chevron-right" ng-click="vm.next()">
+            </div>
+            <img ng-src="{{vm.raceImages[vm.index].image}}" alt="{{vm.raceImages[vm.index].label}}" class="dialog-image">
+          </md-dialog>
+        </div>
+      </div> -->
+
+      <p>Bus Pick Up Points details & timing TBA</p>      
+    </div>
+  </div>
+  <div class="content" id="sponsors">
+    <h2>SPONSORSHIP</h2>
+    <hr>
+    <p>Run for Inclusion 2020 is an inaugural national event that aims to use mainstream sports as a platform to promote integration and nurture an inclusive Singapore. Run for Inclusion 2020 is a race in Singapore where participants run along-side over
+      500 visually, intellectually, hearing, and physically-challenged runners.</p>
+    <p>The Run will be a rallying call for Singaporeans to come together and show their support towards integrating people with special needs.</p>
+    <div class="subcontent">
+      <h3>Reasons to Partner Runninghour</h3>
+      <ol>
+        <li>It's about doing GOOD.</li>
+        <li>Be part of history- It's a race like no other. Run for Inclusion is a race in Singapore where participants run alongside over 500 visually, intellectually, hearing, and physically-challenged runners. Support Runninghour Co-operative's goal to
+          raise awareness and integrate people with special needs into the mainstream through sports and recreational activities.</li>
+        <li>Contribute to nurturing an inclusive Singapore.</li>
+        <li>The branding that you deserve</li>
+      </ol>
+      <p>If you believe your brand is a good fit and would like to discuss sponsorship opportunities please email us at
+        <a href="mailto:raceinfo@runninghour.com">raceinfo@runninghour.com</a>
+      </p>
+    </div>
+    <!-- <div class="subcontent">
+      <h3>Our Sponsors and Partners</h3>
+      <div layout="row" layout-xs="column" layout-align="center start" layout-padding="layout-padding">
+        <div class="sponsor-div" flex-gt-sm="33" flex-sm="33" flex-xs="100" ng-repeat="(key, sponsor) in vm.sponsorRow1">
+          <p class="sponsorInfo">{{sponsor.title}}</p>
+          <a href="{{sponsor.url}}" target="_blank">
+            <div class="frame">
+              <div class="sponsorImg">
+                <img class="sponsorship" src="{{sponsor.image}}" alt="{{sponsor.label}}" style="width: 80%">
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div layout="row" layout-xs="column" layout-align="center start" layout-padding="layout-padding">
+        <div class="sponsor-div" flex-gt-sm="25" flex-sm="25" flex-xs="100" ng-repeat="(key, sponsor) in vm.sponsorRow2">
+          <p class="sponsorInfo">{{sponsor.title}}</p>
+          <a href="{{sponsor.url}}" target="_blank">
+            <div class="frame">
+              <div class="sponsorImg">
+                <img class="sponsorship" src="{{sponsor.image}}" alt="{{sponsor.label}}" ng-style="{ 'width' : sponsor.width }">
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div layout="row" layout-xs="column" layout-align="center start" layout-padding="layout-padding">
+        <div class="sponsor-div" flex-gt-sm="20" flex-sm="20" flex-xs="100" ng-repeat="(key, sponsor) in vm.sponsorRow3">
+          <p class="sponsorInfo">{{sponsor.title}}</p>
+          <a href="{{sponsor.url}}" target="_blank">
+            <div class="frame">
+              <div class="sponsorImg">
+                <img class="sponsorship" src="{{sponsor.image}}" alt="{{sponsor.label}}" style="width: 80%">
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div> -->
+  </div>
+  <div class="content" id="faq">
+    <h2>FREQUENTLY ASKED QUESTIONS (FAQ)</h2>
+    <hr>
+    <div class="subcontent">
+      <h3>The Run</h3>
+      <ol class="text-bold">
+        <li>When will Run for Inclusion 2020, be held?<br>
+          <span class="text-normal">15th August 2020 Saturday 1pm to 7pm</span></li>
+        <li>Where will Run for Inclusion 2020, be held?<br>
+          <span class="text-normal">Jurong Lake Gardens (PAssion WaVe @ Jurong Lake Gardens)</span></li>
+        <li>What time does the run start?<br>
+          <span class="text-normal">Flag Off : Cycling - 2pm  & Run/Walk - 5pm</span></li>
+        <li>What entitlements will participants receive?<br>
+          <p class="text-normal">Medal, Event T-shirt, Tether, Eye-Mask</p>
+        </li>
+        <li>Size chart<br>
+          <img src="resources/img/race/size-chart.jpg" style="display: block; margin: 0 auto">
+          <div class="table-responsive">
+            <table class="table text-normal" style="width: 100%; margin-top: 30px;">
+              <tbody>
+                <tr>
+                  <th colspan="10" class="top-table left-table right-table">
+                    UNISEX SIZES SPECIFICATION
+                  </th>
+                </tr>
+                <tr>
+                  <td colspan="10" class="bottom-table left-table right-table">
+                    SIZE SPECIFICATION: INCHES
+                  </td>
+                </tr>
+                <tr>
+                  <td class="left-table">*DESCRIPTION</td>
+                  <td>2XS</td>
+                  <td>XS</td>
+                  <td>S</td>
+                  <td>M</td>
+                  <td>L</td>
+                  <td>XL</td>
+                  <td>2XL</td>
+                  <!-- <td>3XL <span class="alert_danger"><b>Fully Ordered</b></span></td> -->
+                  <td>3XL</td>
+                  <!-- <td class="right-table">4XL <span class="alert_danger"><b>Fully Ordered</b></span></td> -->
+                  <td>4XL</td>
+                </tr>
+                <tr>
+                  <td class="left-table">CHEST</td>
+                  <td>16.5</td>
+                  <td>17.5</td>
+                  <td>18.5</td>
+                  <td>19.5</td>
+                  <td>20.5</td>
+                  <td>21.5</td>
+                  <td>22.5</td>
+                  <td>23.5</td>
+                  <td class="right-table">24.5</td>
+                </tr>
+                <tr>
+                  <td class="left-table">LENGTH</td>
+                  <td>23.5</td>
+                  <td>24.5</td>
+                  <td>25.5</td>
+                  <td>26.5</td>
+                  <td>27.5</td>
+                  <td>28.5</td>
+                  <td>29.5</td>
+                  <td>30.5</td>
+                  <td class="right-table">31.5</td>
+                </tr>
+                <tr>
+                  <td colspan="10" class="bottom-table left-table right-table">
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div>Note: size may varies +/- 5% from the above mentioned chart.</div>
+          </div>
+        </li>
+        <li>What are the Race Entry Pack Collection details?
+          <table class="table text-normal" style="width: 100%">
+            <tr>
+              <th>Venue</th>
+              <td>TBC</td>
+            </tr>
+            <tr>
+              <th>Date</th>
+              <td>1 and 2 August 2020</td>
+            </tr>
+            <tr>
+              <th>Time</th>
+              <td>12pm to 8pm</td>
+            </tr>
+            <tr>
+              <th>Getting there</th>
+              <td>TBC</td>
+            </tr>
+          </table>
+        </li>
+        <li>What if I am unable to collect my Race Pack?<br>
+          <span class="text-normal">You may assign someone to collect your race packs on your behalf, do download and complete the Authorisation Letter and bring it along for the collection.</span></li>
+        <li>What is the route?<br>
+          <span class="text-normal">You can see the route
+            <a ui-sref="layout.race({'#': 'route'})">
+              <strong>here</strong>
+            </a>.</span>
+        </li>
+        <li>Is there a cut-off time for the 10km, 5km, and 3km non-competitive runs?<br>
+          <span class="text-normal">7pm for all categories</span></li>
+        <li>If I am unable to attend the race even though I have registered for it, can my friend take over the place?<br>
+          <span class="text-normal">No, the race category is strictly non-transferable.</span></li>
+        <li>Can I skate or cycle during the run?<br>
+          <span class="text-normal">Due to safety of all runners participants, skating or cycling is prohibited during the run.</span></li>
+        <li>Can I bring along my pets?<br>
+          <span class="text-normal">Pets are strictly not allowed, except for guide dogs.</span></li>
+        <li>Where can I leave my belongings?<br>
+          <span class="text-normal">The baggage deposit area will be open (timing to be advised). Participants are reminded not to bring any valuables along to the event. Organisers will not be responsible for lost items. Please deposit your baggage early to
+            avoid any delays in your start times.</span></li>
+        <li>What if I am injured during the run or otherwise unable to finish the run?<br>
+          <span class="text-normal">Participants can approach any of our route marshals or medical personnel en-route to seek assistance.</span></li>
+        <li>What are the lane or road closures?<br>
+          <span class="text-normal">There will not be any lane or road closures for the event. Road crossing if any will be manned by security personnel and volunteers.</span></li>
+        <li>What is Personalised Route?<br>
+          <span class="text-normal">Participants who wants to do shorter routes, Event organiser will contact them personally to discuss further.</span></li>
+      </ol>
+    </div>
+    <div class="subcontent">
+      <h3>Registration</h3>
+      <ol class="text-bold">
+        <li>What is the mode of registration and payment?<br>
+          <span class="text-normal">All registrations have to be done online. Payment can only be made online via VISA or MasterCard. For special corporate request or Person With Special Needs and caregivers, please write to
+            <a href="mailto:raceinfo@runninghour.com">
+              <strong>raceinfo@runninghour.com</strong>
+            </a>
+          </span>
+        </li>
+        <li>When is the closing date for registration?<br>
+          <span class="text-normal">TBC</span></li>
+        <li>How do I know if my registration is successful?<br>
+          <span class="text-normal">Upon successful payment and registration, participants will receive a confirmation slip via email. Please check your spam or junk inbox should you not receive it in your normal inbox.</span></li>
+        <li>What if I do not receive my confirmation slip after my registration?<br>
+          <span class="text-normal">
+            This could be due to a variety of reasons as follows:<br>
+            4.1 Your registration was not successful and therefore the confirmation slip was not rendered<br>
+            4.2 There could be an error in your email at the point of registration so the confirmation slip was unable to be sent to the correct email address.
+            <br>
+            4.2 The email has been clocked by your mail server and/or is treated as spam.
+            <br>
+            4.3 You can contact us at
+            <a href="mailto:raceinfo@runninghour.com">
+              <strong>raceinfo@runninghour.com</strong>
+            </a>
+          </span>
+        </li>
+        <li>Can I get a refund if I choose not to participate after submitting my registration?<br>
+          <span class="text-normal">No. All successful registration are non-refundable.</span></li>
+        <li>
+          Can I amend my particulars after submitting my registration?<br>
+          <span class="text-normal">Yes. Participants are allowed to amend their particulars. Please send an email to
+            <a href="mailto:raceinfo@runninghour.com">
+              <strong>raceinfo@runninghour.com</strong>
+            </a>
+            to inform the organiser about the necessary changes.</span></li>
+        <li>Can I request to change the size of the running t-shirt during the Race Entry Pack Collection?<br>
+          <span class="text-normal">No. We seek your understanding that changing of sizes will not be entertained once your registration details are submitted and confirmed. Do refer to the size chart before ordering. Thank you.</span></li>
+        <li>How do I register as a group?<br>
+          <span class="text-normal">In order to register as a group, you need to gather at least 20 participants or more. Please email to
+            <a href="mailto:raceinfo@runninghour.com">
+              <strong>raceinfo@runninghour.com</strong>
+            </a>
+            for more information.</span></li>
+      </ol>
+    </div>
+  </div>
+  <div class="content" id="contact">
+    <h2>CONTACT</h2>
+    <hr>
+    <p>Enquiries or feedback regarding this event?</p>
+    <p>If your question is not answered in the FAQs, please email us at
+      <a href="mailto:raceinfo@runninghour.com">raceinfo@runninghour.com</a>
+    </p>
+    <table class="table no-border">
+      <tr>
+        <th>Step One</th>
+        <td>Please check the FAQs here to see if your questions have been answered.
+        </td>
+      </tr>
+      <tr>
+        <th>Step Two</th>
+        <td>If your question is not answered in the FAQs, please email us at
+          <a href="mailto:raceinfo@runninghour.com">raceinfo@runninghour.com</a>
+        </td>
+      </tr>
+    </table>
+  </div>
+</section>
+    <!-- <a class="register-float" href="https://www.digitalracesolutions.com.sg/cgi-bin/registration/runninghour2017/prereg.cgi" target="_blank"> -->
+    <!-- <a class="register-float" ui-sref="layout.registration()" target="_blank"> -->
+    <!-- <a class="register-float" ui-sref="layout.registration()"></a> -->
